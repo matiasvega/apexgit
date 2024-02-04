@@ -1,0 +1,65 @@
+prompt --application/pages/page_00003
+begin
+--   Manifest
+--     PAGE: 00003
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.0'
+,p_default_workspace_id=>3200437164546170
+,p_default_application_id=>101
+,p_default_id_offset=>0
+,p_default_owner=>'ADMIN'
+);
+wwv_flow_imp_page.create_page(
+ p_id=>3
+,p_name=>'cal'
+,p_alias=>'CAL'
+,p_step_title=>'cal'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20240204140057'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(7601329787527719)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(4282865692730997)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(4209764904730963)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_imp.id(4387865538731038)
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(7602029166527723)
+,p_plug_name=>'cal'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_imp.id(4321840691731010)
+,p_plug_display_sequence=>10
+,p_query_type=>'TABLE'
+,p_query_table=>'EBA_DEMO_CAL_MYSESSIONS'
+,p_include_rowid_column=>false
+,p_plug_source_type=>'NATIVE_CSS_CALENDAR'
+,p_plug_query_num_rows=>15
+,p_attribute_01=>'START_DATE'
+,p_attribute_02=>'END_DATE'
+,p_attribute_03=>'ID'
+,p_attribute_07=>'N'
+,p_attribute_09=>'list:navigation'
+,p_attribute_11=>'month:week:day:list:navigation'
+,p_attribute_13=>'N'
+,p_attribute_17=>'Y'
+,p_attribute_18=>'00'
+,p_attribute_19=>'Y'
+,p_attribute_20=>'9'
+,p_attribute_21=>'10'
+,p_attribute_22=>'Y'
+);
+wwv_flow_imp.component_end;
+end;
+/
