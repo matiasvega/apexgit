@@ -24,6 +24,15 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_icon=>'fa-home'
 ,p_list_item_current_type=>'TARGET_PAGE'
 );
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(7601066170527714)
+,p_list_item_display_sequence=>20
+,p_list_item_link_text=>'cal'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-calendar-o'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'3'
+);
 wwv_flow_imp.component_end;
 end;
 /

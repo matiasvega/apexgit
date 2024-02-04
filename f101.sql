@@ -33,14 +33,14 @@ prompt APPLICATION 101 - New App
 -- Application Export:
 --   Application:     101
 --   Name:            New App
---   Date and Time:   22:11 Wednesday December 27, 2023
+--   Date and Time:   14:32 Sunday February 4, 2024
 --   Exported By:     SYSTEM
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                      3
+--     Pages:                      4
 --       Items:                    3
 --       Processes:                4
---       Regions:                  2
+--       Regions:                  4
 --       Buttons:                  1
 --     Shared Components:
 --       Logic:
@@ -48,7 +48,7 @@ prompt APPLICATION 101 - New App
 --       Navigation:
 --         Lists:                  2
 --         Breadcrumbs:            1
---           Entries:              1
+--           Entries:              2
 --       Security:
 --         Authentication:         1
 --         Authorization:          1
@@ -115,7 +115,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'New App'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20231226223343'
+,p_last_upd_yyyymmddhh24miss=>'20240204140057'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -161,6 +161,15 @@ wwv_flow_imp_shared.create_list_item(
 ,p_list_item_link_target=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
 ,p_list_item_icon=>'fa-home'
 ,p_list_item_current_type=>'TARGET_PAGE'
+);
+wwv_flow_imp_shared.create_list_item(
+ p_id=>wwv_flow_imp.id(7601066170527714)
+,p_list_item_display_sequence=>20
+,p_list_item_link_text=>'cal'
+,p_list_item_link_target=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_list_item_icon=>'fa-calendar-o'
+,p_list_item_current_type=>'COLON_DELIMITED_PAGE_LIST'
+,p_list_item_current_for_pages=>'3'
 );
 end;
 /
@@ -864,6 +873,12 @@ wwv_flow_imp_shared.create_menu_option(
 ,p_short_name=>'Home'
 ,p_link=>'f?p=&APP_ID.:1:&APP_SESSION.::&DEBUG.:::'
 ,p_page_id=>1
+);
+wwv_flow_imp_shared.create_menu_option(
+ p_id=>wwv_flow_imp.id(7601886025527722)
+,p_short_name=>'cal'
+,p_link=>'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+,p_page_id=>3
 );
 end;
 /
@@ -17951,6 +17966,59 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 ,p_attribute_03=>'Y'
+);
+end;
+/
+prompt --application/pages/page_00003
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>3
+,p_name=>'cal'
+,p_alias=>'CAL'
+,p_step_title=>'cal'
+,p_autocomplete_on_off=>'OFF'
+,p_page_template_options=>'#DEFAULT#'
+,p_protection_level=>'C'
+,p_last_updated_by=>'ADMIN'
+,p_last_upd_yyyymmddhh24miss=>'20240204140057'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(7601329787527719)
+,p_plug_name=>'Breadcrumb'
+,p_region_template_options=>'#DEFAULT#:t-BreadcrumbRegion--useBreadcrumbTitle'
+,p_component_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(4282865692730997)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_menu_id=>wwv_flow_imp.id(4209764904730963)
+,p_plug_source_type=>'NATIVE_BREADCRUMB'
+,p_menu_template_id=>wwv_flow_imp.id(4387865538731038)
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(7602029166527723)
+,p_plug_name=>'cal'
+,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_imp.id(4321840691731010)
+,p_plug_display_sequence=>10
+,p_query_type=>'TABLE'
+,p_query_table=>'EBA_DEMO_CAL_MYSESSIONS'
+,p_include_rowid_column=>false
+,p_plug_source_type=>'NATIVE_CSS_CALENDAR'
+,p_plug_query_num_rows=>15
+,p_attribute_01=>'START_DATE'
+,p_attribute_02=>'END_DATE'
+,p_attribute_03=>'ID'
+,p_attribute_07=>'N'
+,p_attribute_09=>'list:navigation'
+,p_attribute_11=>'month:week:day:list:navigation'
+,p_attribute_13=>'N'
+,p_attribute_17=>'Y'
+,p_attribute_18=>'00'
+,p_attribute_19=>'Y'
+,p_attribute_20=>'9'
+,p_attribute_21=>'10'
+,p_attribute_22=>'Y'
 );
 end;
 /
