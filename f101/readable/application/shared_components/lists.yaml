@@ -33,6 +33,33 @@
     user-defined-attributes: 
       translatable: false
 
+  - # ====== Entry: cal ==========================================
+    id: 7601066170527714
+    label: 
+      label: cal
+
+    icon: 
+      image/icon-css-classes: fa-calendar-o
+
+    layout: 
+      sequence: 20
+
+    is-current: 
+      type: Pages
+      pages: 
+      - 3
+
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:3:&APP_SESSION.::&DEBUG.:::'
+        page: 3 # cal
+
+    click-counting: 
+      count-clicks: false
+
+    user-defined-attributes: 
+      translatable: false
+
 - # ====== List: Navigation Bar ================================
   id: 4499250016731207
   identification: 
